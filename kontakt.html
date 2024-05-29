@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+           <style>
+               body {
+                   font-family: Arial, sans-serif;
+                   line-height: 1.6;
+                   margin: 0px;
+                   background-color: #f4f4f4;
+                   color: #333;
+               }
+               h1, h2 {
+            color: #d32f2f;
+        }
+               h1 {
+                   color: #d32f2f;
+               }
+               .contact-section {
+                   background: #fff;
+                   padding: 20px;
+                   margin-bottom: 0px;
+                   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+               }
+               .contact-details {
+                   margin-bottom: 0px;
+               }
+               .contact-details h3 {
+                   margin-bottom: 0px;
+               }
+               body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 20px;
+            }
+           </style>
+       </head>
+       <body>
+           <h1>Kontakt</h1>
+           <div class="contact-section">
+               <div class="contact-details">
+                   <h3>Adres:</h3>
+                   <p>Formula 1 News<br>
+                   Ul. Wyścigowa 123<br>
+                   00-001 Warszawa<br>
+                   Polska</p>
+               </div>
+               <div class="contact-details">
+                   <h3>Telefon:</h3>
+                   <p>+48 123 456 789</p>
+               </div>
+               <div class="contact-details">
+                   <h3>Email:</h3>
+                   <p>kontakt@formula1news.pl</p>
+               </div>
+               <div class="contact-details">
+                   <h3>Godziny otwarcia:</h3>
+                   <p>Poniedziałek - Piątek: 9:00 - 17:00<br>
+                   Sobota: 10:00 - 14:00<br>
+                   Niedziela: Zamknięte</p>
+               </div>
+               <div id="header">
+                <div id="clock"></div>
+                <div id="date"></div>
+                <div id="visitCount"></div>
+                <div id="timeSpent"></div>
+            </div>
+           </div>
+           <script>
+            // Funkcja aktualizująca zegar i datę
+            function updateClockAndDate() {
+                const now = new Date();
+                const clockElement = document.getElementById('clock');
+                const dateElement = document.getElementById('date');
+                
+                clockElement.textContent = now.toLocaleTimeString('pl-PL');
+                dateElement.textContent = now.toLocaleDateString('pl-PL');
+            }
+        
+            // Inkrementacja licznika odwiedzin
+            function updateVisitCount() {
+                if (!localStorage.getItem('visitCount')) {
+                    localStorage.setItem('visitCount', 0);
+                }
+                let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+            }
+        
+            // Czas spędzony na stronie
+            let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+            function updateTimeSpent() {
+                timeSpent++;
+                sessionStorage.setItem('timeSpent', timeSpent);
+                document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+            }
+        
+            // Aktualizacja zegara i daty co sekundę
+            setInterval(updateClockAndDate, 1000);
+            
+            // Aktualizacja czasu spędzonego na stronie co sekundę
+            setInterval(updateTimeSpent, 1000);
+        
+            // Ustawienie początkowych wartości
+            updateClockAndDate();
+            updateVisitCount();
+            updateTimeSpent();
+        </script>
+           <p>Skontaktuj się z nami, aby uzyskać więcej informacji na temat Formuły 1 lub zgłosić uwagi i pytania dotyczące naszej strony internetowej. Jesteśmy tutaj, aby pomóc!</p>
+       </body>
+
+       </html>
+    </main>
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+</body>
+</html>

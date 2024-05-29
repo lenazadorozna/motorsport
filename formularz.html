@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script1.js" defer></script>
+</head>
+<body>
+    
+    
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+
+    
+
+    <main>
+        <style>
+            h1, h2 {
+            color: #d32f2f;
+        }
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 5px;
+            }
+        </style>
+        <form id="myForm">
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="birthdate">Data urodzenia:</label>
+            <input type="date" id="birthdate" name="birthdate" required><br><br>
+
+            <label for="gender">Płeć:</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Mężczyzna</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Kobieta</label><br><br>
+
+            <label for="interests">Zainteresowania:</label>
+            <input type="checkbox" id="sports" name="interests" value="sports">
+            <label for="sports">Sport</label>
+            <input type="checkbox" id="music" name="interests" value="music">
+            <label for="music">Muzyka</label>
+            <input type="checkbox" id="reading" name="interests" value="reading">
+            <label for="reading">Czytanie</label><br><br>
+
+            <label for="occupation">Zawód:</label>
+            <select id="occupation" name="occupation">
+                <option value="student">Student</option>
+                <option value="employed">Zatrudniony</option>
+                <option value="unemployed">Bezrobotny</option>
+            </select><br><br>
+
+            <label for="bio">Biografia:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
+
+            <label for="profilePicture">Zdjęcie profilowe:</label>
+            <input type="file" id="profilePicture" name="profilePicture"><br><br>
+
+            <button type="submit">Wyślij</button>
+        </form>
+        <div id="header">
+            <div id="clock"></div>
+            <div id="date"></div>
+            <div id="visitCount"></div>
+            <div id="timeSpent"></div>
+        </div>
+        <script>
+            // Funkcja aktualizująca zegar i datę
+            function updateClockAndDate() {
+                const now = new Date();
+                const clockElement = document.getElementById('clock');
+                const dateElement = document.getElementById('date');
+                
+                clockElement.textContent = now.toLocaleTimeString('pl-PL');
+                dateElement.textContent = now.toLocaleDateString('pl-PL');
+            }
+        
+            // Inkrementacja licznika odwiedzin
+            function updateVisitCount() {
+                if (!localStorage.getItem('visitCount')) {
+                    localStorage.setItem('visitCount', 0);
+                }
+                let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+            }
+        
+            // Czas spędzony na stronie
+            let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+            function updateTimeSpent() {
+                timeSpent++;
+                sessionStorage.setItem('timeSpent', timeSpent);
+                document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+            }
+        
+            // Aktualizacja zegara i daty co sekundę
+            setInterval(updateClockAndDate, 1000);
+            
+            // Aktualizacja czasu spędzonego na stronie co sekundę
+            setInterval(updateTimeSpent, 1000);
+        
+            // Ustawienie początkowych wartości
+            updateClockAndDate();
+            updateVisitCount();
+            updateTimeSpent();
+        </script>
+    </main>
+
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+
+    
+</body>
+</html>
+

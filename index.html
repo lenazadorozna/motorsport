@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorsport</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+        <style>h1, h2 {
+            color: #d32f2f;
+        }</style>
+    
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+           
+
+        .hero {
+            background-image: url('motorsport.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .articles, .results, .drivers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .article, .result, .driver {
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+        }
+        .article img, .driver img {
+            width: 100%;
+            height: auto;
+        }
+        .article h2, .result h2, .driver h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .article p, .result p, .driver p {
+            font-size: 16px;
+        }
+        .contact {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .contact p {
+            font-size: 18px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Witamy na portalu o motorsporcie!</h1>
+    </div>
+    <div class="content">
+        <div class="section-title">Ostatnie Aktualności</div>
+        <div class="articles">
+            <div class="article">
+                <img src="race1.png" alt="Wyścig 1">
+                <h2>Nowe zasady F1 na sezon 2024</h2>
+                <p>FIA ogłosiła nowe zasady dotyczące aerodynamiki i silników na sezon 2024.</p>
+            </div>
+            <div class="article">
+                <img src="race2.png" alt="Wyścig 2">
+                <h2>WRC: Rajd Monte Carlo</h2>
+                <p>Relacja z Rajdu Monte Carlo, gdzie Sebastien Ogier zdobył kolejne zwycięstwo.</p>
+            </div>
+            <div class="article">
+                <img src="race3.png" alt="Wyścig 3">
+                <h2>Le Mans 24h - Podsumowanie</h2>
+                <p>Podsumowanie 24-godzinnego wyścigu Le Mans, w którym triumfował zespół Toyota Gazoo Racing.</p>
+            </div>
+        </div>
+
+        <div class="section-title">Ostatnie Wyniki</div>
+        <div class="results">
+            <div class="result">
+                <h2>Grand Prix Monako</h2>
+                <p>1. Max Verstappen</p>
+                <p>2. Lewis Hamilton</p>
+                <p>3. Charles Leclerc</p>
+            </div>
+            <div class="result">
+                <h2>Rajd Sardynii</h2>
+                <p>1. Ott Tänak</p>
+                <p>2. Elfyn Evans</p>
+                <p>3. Thierry Neuville</p>
+            </div>
+            <div class="result">
+                <h2>Wyścig Długodystansowy Spa</h2>
+                <p>1. Toyota Gazoo Racing</p>
+                <p>2. Porsche GT Team</p>
+                <p>3. AF Corse Ferrari</p>
+            </div>
+        </div>
+
+        <div class="section-title">Zawodnicy</div>
+        <div class="drivers">
+            <div class="driver">
+                <img src="race4.png" alt="Lewis Hamilton">
+                <h2>Lewis Hamilton</h2>
+                <p>Kierowca zespołu Mercedes-AMG Petronas Formula One Team.</p>
+            </div>
+            <div class="driver">
+                <img src="race5.png" alt="Sebastien Ogier">
+                <h2>Sebastien Ogier</h2>
+                <p>Ośmiokrotny mistrz świata w rajdach WRC.</p>
+            </div>
+            <div class="driver">
+                <img src="race6.png" alt="Fernando Alonso">
+                <h2>Fernando Alonso</h2>
+                <p>Kierowca zespołu Aston Martin Cognizant Formula One Team.</p>
+            </div>
+        </div>
+    </div>
+
+<div id="header">
+    <div id="clock"></div>
+    <div id="date"></div>
+    <div id="visitCount"></div>
+    <div id="timeSpent"></div>
+</div>
+
+<script>
+    // Funkcja aktualizująca zegar i datę
+    function updateClockAndDate() {
+        const now = new Date();
+        const clockElement = document.getElementById('clock');
+        const dateElement = document.getElementById('date');
+        
+        clockElement.textContent = now.toLocaleTimeString('pl-PL');
+        dateElement.textContent = now.toLocaleDateString('pl-PL');
+    }
+
+    // Inkrementacja licznika odwiedzin
+    function updateVisitCount() {
+        if (!localStorage.getItem('visitCount')) {
+            localStorage.setItem('visitCount', 0);
+        }
+        let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+    }
+
+    // Czas spędzony na stronie
+    let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+    function updateTimeSpent() {
+        timeSpent++;
+        sessionStorage.setItem('timeSpent', timeSpent);
+        document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+    }
+
+    // Aktualizacja zegara i daty co sekundę
+    setInterval(updateClockAndDate, 1000);
+    
+    // Aktualizacja czasu spędzonego na stronie co sekundę
+    setInterval(updateTimeSpent, 1000);
+
+    // Ustawienie początkowych wartości
+    updateClockAndDate();
+    updateVisitCount();
+    updateTimeSpent();
+</script>
+</main>
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+    
+    </script>
+</body>
+</html>

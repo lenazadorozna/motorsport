@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kierowcy Formuły 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    background-color: #f4f4f4;
+                    color: #333;
+                }
+                h1, h2 {
+                    color: #d32f2f;
+                }
+                .driver-profile {
+                    background: #fff;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+            </style>
+        </head>
+        <body>
+            <h1>Kierowcy Formuły 1</h1>
+            <h2>27 maja 2024</h2>
+        
+            <div class="driver-profile">
+                <h3>Lewis Hamilton</h3>
+                <p>Lewis Hamilton, siedmiokrotny mistrz świata, jest jednym z najbardziej utytułowanych kierowców w historii Formuły 1. Reprezentując Mercedes AMG Petronas Formula One Team, Hamilton jest znany ze swojej niesamowitej prędkości, umiejętności wyprzedzania oraz zdolności do adaptacji do zmieniających się warunków na torze. Jego nieustająca determinacja i chęć rywalizacji sprawiają, że wciąż jest jednym z czołowych zawodników na torze.</p>
+            </div>
+        
+            <div class="driver-profile">
+                <h3>Max Verstappen</h3>
+                <p>Max Verstappen, młody i utalentowany kierowca Red Bull Racing, już zdążył zapisać się w historii F1 jako najmłodszy zwycięzca wyścigu Grand Prix. Jego agresywny styl jazdy, niesamowite umiejętności techniczne i zdolność do podejmowania ryzyka na torze przyniosły mu uznanie zarówno fanów, jak i ekspertów. W sezonie 2024, Verstappen kontynuuje swoją dominację, prowadząc w klasyfikacji kierowców.</p>
+            </div>
+        
+            <div class="driver-profile">
+                <h3>Fernando Alonso</h3>
+                <p>Fernando Alonso, dwukrotny mistrz świata, jest jednym z najbardziej doświadczonych kierowców w stawce. Obecnie jeżdżący dla zespołu Aston Martin, Alonso jest ceniony za swoją wszechstronność i zdolność do wyciągania maksimum z każdego samochodu, którym jeździ. Jego bogata kariera i pasja do wyścigów sprawiają, że jest ikoną sportu, a jego nadchodzące odejście na emeryturę będzie wielką stratą dla Formuły 1.</p>
+            </div>
+        
+            <div class="driver-profile">
+                <h3>Charles Leclerc</h3>
+                <p>Charles Leclerc, młody kierowca Scuderia Ferrari, jest jednym z najbardziej obiecujących talentów młodego pokolenia. Jego precyzyjny styl jazdy, strategiczne myślenie i zdolność do utrzymania wysokiej prędkości w trudnych warunkach czynią go jednym z faworytów do przyszłych tytułów mistrzowskich. Leclerc jest symbolem nowej ery w Ferrari, dążąc do przywrócenia zespołu na szczyt.</p>
+            </div>
+        
+            <div class="driver-profile">
+                <h3>Lando Norris</h3>
+                <p>Lando Norris, brytyjski kierowca McLaren Racing, jest znany ze swojej wesołej osobowości i talentu za kierownicą. Jego umiejętność szybkiego adaptowania się do różnych sytuacji na torze oraz niesamowita prędkość czynią go jednym z najciekawszych młodych kierowców w F1. Norris nieustannie rozwija swoje umiejętności, mając na celu zdobycie pierwszego tytułu mistrzowskiego.</p>
+            </div>
+            <div id="header">
+                <div id="clock"></div>
+                <div id="date"></div>
+                <div id="visitCount"></div>
+                <div id="timeSpent"></div>
+            </div>
+                <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div id="header">
+        <div id="clock"></div>
+        <div id="date"></div>
+        <div id="visitCount"></div>
+        <div id="timeSpent"></div>
+    </div>
+    
+    <script>
+        // Funkcja aktualizująca zegar i datę
+        function updateClockAndDate() {
+            const now = new Date();
+            const clockElement = document.getElementById('clock');
+            const dateElement = document.getElementById('date');
+            
+            clockElement.textContent = now.toLocaleTimeString('pl-PL');
+            dateElement.textContent = now.toLocaleDateString('pl-PL');
+        }
+    
+        // Inkrementacja licznika odwiedzin
+        function updateVisitCount() {
+            if (!localStorage.getItem('visitCount')) {
+                localStorage.setItem('visitCount', 0);
+            }
+            let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+            visitCount++;
+            localStorage.setItem('visitCount', visitCount);
+            document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+        }
+    
+        // Czas spędzony na stronie
+        let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+        function updateTimeSpent() {
+            timeSpent++;
+            sessionStorage.setItem('timeSpent', timeSpent);
+            document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+        }
+    
+        // Aktualizacja zegara i daty co sekundę
+        setInterval(updateClockAndDate, 1000);
+        
+        // Aktualizacja czasu spędzonego na stronie co sekundę
+        setInterval(updateTimeSpent, 1000);
+    
+        // Ustawienie początkowych wartości
+        updateClockAndDate();
+        updateVisitCount();
+        updateTimeSpent();
+    </script>
+            <p>Śledź nasze aktualności, aby być na bieżąco z najnowszymi informacjami i analizami dotyczącymi kierowców Formuły 1!</p>
+        </body>
+        </html>
+    </main>
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+
+    </footer>
+</body>
+</html>

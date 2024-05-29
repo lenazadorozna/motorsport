@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+    </style>
+    <script>
+        function showInfo(areaName) {
+            alert("Nazwa elementu: " + areaName);
+        } 
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <img src="company_plan.png" usemap="#companyMap" alt="Plan Bolidu F1">
+    
+    <map name="companyMap">
+        
+        <area shape="rect" coords="34,44,100,350" alt="Przednie skrzydło" onclick="showInfo('Przednie skrzydło : Przednie skrzydło bolidu Formuły 1 jest kluczowym elementem aerodynamicznym, który pełni kilka ważnych funkcji. Jego głównym zadaniem jest generowanie docisku, co poprawia przyczepność przednich opon, oraz zarządzanie przepływem powietrza wokół całego samochodu, co wpływa na aerodynamikę i stabilność pojazdu.')">
+        
+        
+        <area shape="circle" coords="210,320,50" alt="Przednie koło" onclick="showInfo('Przednie koło : Koła w Formule 1 odgrywają kluczową rolę w osiągach bolidów. W sezonie 2024 kontynuowane są zmiany wprowadzone przez Pirelli, jedynego dostawcę opon w Formule 1, które mają na celu poprawę bezpieczeństwa, wydajności oraz zapewnienie bardziej ekscytujących wyścigów.')">
+        
+       
+        <area shape="rect" coords="350,250,400,310" alt="Wlot powietrza" onclick="showInfo('Wlot powietrza : Znajdują się w przedniej części samochodu i kierują powietrze do chłodnic oraz innych systemów chłodzenia. Celem tych wlotów jest optymalizacja przepływu powietrza i minimalizacja oporu aerodynamicznego.')">
+       
+        <area shape="rect" coords="470,250,700,340" alt="Boczna sekcja side-podów" onclick="showInfo('Boczna sekcja side-podów : Sidepody są kluczowym elementem aerodynamicznym bolidu F1. Ich kształt jest projektowany tak, aby kontrolować przepływ powietrza wokół samochodu i skierować go do odpowiednich miejsc, takich jak dyfuzor, tylne skrzydło oraz inne elementy aerodynamiczne.')">
+        
+       
+        <area shape="circle" coords="800,320,50" alt="Tylne koło" onclick="showInfo('Tylne koło : Koła w Formule 1 odgrywają kluczową rolę w osiągach bolidów. W sezonie 2024 kontynuowane są zmiany wprowadzone przez Pirelli, jedynego dostawcę opon w Formule 1, które mają na celu poprawę bezpieczeństwa, wydajności oraz zapewnienie bardziej ekscytujących wyścigów.')">
+       
+        <area shape="poly" coords="850,150,950,150,1000,250,900,300,850,250" alt="Kuchnia" onclick="showInfo('Tylne skrzydło : Tylne skrzydło działa na zasadzie różnicy ciśnień pomiędzy górną a dolną powierzchnią skrzydła. Górna powierzchnia jest zaprojektowana tak, aby powietrze przepływało szybciej, co powoduje niższe ciśnienie w porównaniu do dolnej powierzchni. Ta różnica ciśnień generuje siłę skierowaną w dół, która jest znana jako docisk.')">
+    </map>
+    <div id="header">
+        <div id="clock"></div>
+        <div id="date"></div>
+        <div id="visitCount"></div>
+        <div id="timeSpent"></div>
+    </div>
+    <script>
+        // Funkcja aktualizująca zegar i datę
+        function updateClockAndDate() {
+            const now = new Date();
+            const clockElement = document.getElementById('clock');
+            const dateElement = document.getElementById('date');
+            
+            clockElement.textContent = now.toLocaleTimeString('pl-PL');
+            dateElement.textContent = now.toLocaleDateString('pl-PL');
+        }
+    
+        // Inkrementacja licznika odwiedzin
+        function updateVisitCount() {
+            if (!localStorage.getItem('visitCount')) {
+                localStorage.setItem('visitCount', 0);
+            }
+            let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+            visitCount++;
+            localStorage.setItem('visitCount', visitCount);
+            document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+        }
+    
+        // Czas spędzony na stronie
+        let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+        function updateTimeSpent() {
+            timeSpent++;
+            sessionStorage.setItem('timeSpent', timeSpent);
+            document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+        }
+    
+        // Aktualizacja zegara i daty co sekundę
+        setInterval(updateClockAndDate, 1000);
+        
+        // Aktualizacja czasu spędzonego na stronie co sekundę
+        setInterval(updateTimeSpent, 1000);
+    
+        // Ustawienie początkowych wartości
+        updateClockAndDate();
+        updateVisitCount();
+        updateTimeSpent();
+    </script>
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+</body>
+</html>

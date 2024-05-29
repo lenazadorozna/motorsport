@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktualności ze Świata Formuły 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+<head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        .news-item {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 55px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+    </style>
+</head>
+<body>
+    <h1>Aktualności ze Świata Formuły 1</h1>
+    <h2>27 maja 2024</h2>
+
+    <div class="news-item">
+        <h3>Mercedes prezentuje nowy pakiet aerodynamiczny na Grand Prix Monako</h3>
+        <p>Mercedes AMG Petronas Formula One Team wprowadza nowy pakiet aerodynamiczny na nadchodzący wyścig w Monako. Zmiany mają na celu poprawę docisku i stabilności samochodu na krętych ulicach Monte Carlo. Lewis Hamilton wyraził nadzieję, że nowa konfiguracja pozwoli mu wrócić na czołowe pozycje po nieco rozczarowujących wynikach w poprzednich rundach sezonu.</p>
+    </div>
+
+    <div class="news-item">
+        <h3>Red Bull dominuje w sezonie 2024</h3>
+        <p>Red Bull Racing kontynuuje swoją dominację w sezonie 2024. Max Verstappen i Sergio Perez regularnie zdobywają podium, a ich samochody wykazują imponującą niezawodność i prędkość. Verstappen, lider klasyfikacji kierowców, ma już znaczącą przewagę punktową nad rywalami, co stawia go w roli głównego faworyta do zdobycia tytułu mistrza świata.</p>
+    </div>
+
+    <div class="news-item">
+        <h3>Fernando Alonso zapowiada zakończenie kariery</h3>
+        <p>Dwukrotny mistrz świata, Fernando Alonso, ogłosił, że sezon 2024 będzie jego ostatnim w Formule 1. Hiszpan, który obecnie jeździ dla zespołu Aston Martin, chce skupić się na innych wyzwaniach, w tym na startach w wyścigach długodystansowych. Alonso zyskał uznanie za swoją długowieczność i nieustającą konkurencyjność, a jego odejście z pewnością będzie znaczącym momentem w historii F1.</p>
+    </div>
+
+    <div class="news-item">
+        <h3>Ferrari planuje dużą inwestycję w rozwój jednostki napędowej</h3>
+        <p>Scuderia Ferrari ogłosiła plany zainwestowania znacznych środków w rozwój swojej jednostki napędowej. Celem jest poprawa osiągów i niezawodności, aby móc konkurować z Red Bullem i Mercedesem na najwyższym poziomie. Szef zespołu, Fred Vasseur, podkreślił, że Ferrari nie może sobie pozwolić na kolejne rozczarowania i musi walczyć o tytuły mistrzowskie.</p>
+    </div>
+
+    <div class="news-item">
+        <h3>Nadchodzące Grand Prix Monako – prognozy i oczekiwania</h3>
+        <p>Już w najbliższy weekend odbędzie się jedno z najbardziej prestiżowych wydarzeń w kalendarzu F1 – Grand Prix Monako. Tradycyjnie wyścig ten przyciąga uwagę fanów z całego świata dzięki swojej unikalnej lokalizacji i wyzwaniom, jakie stawia przed kierowcami. Eksperci przewidują zaciętą rywalizację, zwłaszcza między zespołami Red Bulla, Mercedesa i Ferrari. Czy Max Verstappen umocni swoją pozycję lidera, czy może zobaczymy niespodziankę?</p>
+    </div>
+    <div id="header">
+        <div id="clock"></div>
+        <div id="date"></div>
+        <div id="visitCount"></div>
+        <div id="timeSpent"></div>
+    </div>
+    <script>
+        // Funkcja aktualizująca zegar i datę
+    function updateClockAndDate() {
+        const now = new Date();
+        const clockElement = document.getElementById('clock');
+        const dateElement = document.getElementById('date');
+        
+        clockElement.textContent = now.toLocaleTimeString('pl-PL');
+        dateElement.textContent = now.toLocaleDateString('pl-PL');
+    }
+
+    // Inkrementacja licznika odwiedzin
+    function updateVisitCount() {
+        if (!localStorage.getItem('visitCount')) {
+            localStorage.setItem('visitCount', 0);
+        }
+        let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+    }
+
+    // Czas spędzony na stronie
+    let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+    function updateTimeSpent() {
+        timeSpent++;
+        sessionStorage.setItem('timeSpent', timeSpent);
+        document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+    }
+
+    // Aktualizacja zegara i daty co sekundę
+    setInterval(updateClockAndDate, 1000);
+    
+    // Aktualizacja czasu spędzonego na stronie co sekundę
+    setInterval(updateTimeSpent, 1000);
+
+    // Ustawienie początkowych wartości
+    updateClockAndDate();
+    updateVisitCount();
+    updateTimeSpent();
+    </script>
+    </main>
+    
+    <footer>
+    <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+</footer>
+</body>
+</html>

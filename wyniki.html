@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyniki sezonu 2023</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+              <li><a href="index.html">Strona główna</a></li>
+              <li><a href="Zegar.html">Zegar</a></li>
+              <li><a href="Kalkulator.html">Kalkulator</a></li>
+              <li><a href="kierowcy.html">Kierowcy</a></li>
+              <li><a href="aktualnosci.html">Aktualności</a></li>
+              <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+              <li><a href="galeria.html">Galeria obrazów</a></li>
+              <li><a href="kontakt.html">Kontakt</a></li>
+              <li><a href="prezentacja.html">Prezentacja</a></li>
+              <li><a href="formularz.html">Formularz</a></li>
+              <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+        <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: center;
+        }
+        
+        th {
+          background-color: #f2f2f2;
+        }
+        </style>
+        </head>
+        <body>
+        <h2>Klasyfikacja końcowa kierowców F1 na sezon 2023</h2>
+        <table id="f1Table">
+        <thead>
+        <tr>
+        <th rowspan="2">Pozycja</th>
+        <th rowspan="2">Imię i Nazwisko</th>
+        <th rowspan="2">Zespół</th>
+        <th rowspan="2">Bolid</th>
+        <th colspan="21">Rezultat wyściokowy</th>
+        </tr>
+        <tr>
+        <th>Wyścig 1</th>
+        <th>Wyścig 2</th>
+        <th>Wyścig 3</th>
+        <th>Wyścig 4</th>
+        <th>Wyścig 5</th>
+        <th>Wyścig 6</th>
+        <th>Wyścig 7</th>
+        <th>Wyścig 8</th>
+        <th>Wyścig 9</th>
+        <th>Wyścig 10</th>
+        <th>Wyścig 11</th>
+        <th>Wyścig 12</th>
+        <th>Wyścig 13</th>
+        <th>Wyścig 14</th>
+        <th>Wyścig 15</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <!-- JavaScript will populate this part -->
+        </tbody>
+        </table>
+        
+        <script>
+    
+        const f1Data2023 = [
+          { position: 1, driver: "Max Vesrtappen", team: "Red Bull", car: "RB19", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 2, driver: "Sergio Pérez", team: "Red Bull", car: "RB19", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 3, driver: "Lewis Hamilton", team: "Mercedes", car: "W14", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 4, driver: "Fernando Alonso", team: "Aston Martin	", car: "AMR23", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 4,  ] },
+          { position: 5, driver: "Charles Leclerc", team: "Ferrari", car: "SF-23", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 6, driver: " Lando Norris", team: "McLaren", car: "MCL60", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1, ] },
+          { position: 7, driver: "Carlos Sainz Jr.", team: "Ferrari", car: "SF-23", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, ] },
+          { position: 8, driver: "George Russell", team: "Mercedes", car: "W14", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 9, driver: "Oscar Piastri", team: "McLaren", car: "MCL60", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 10, driver: "Lance Stroll", team: "Aston Martin", car: "AMR23", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1, ] },
+          { position: 11, driver: "Pierre Gasly", team: "Alpine", car: "A523", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 12, driver: "Esteban Ocon", team: "Alpine", car: "A523", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 13, driver: "Alexander Albon", team: "Williams", car: "FW45", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 14, driver: "Yūki Tsunoda", team: "AlphaTauri", car: "AT04", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 15, driver: "Valtteri Bottas", team: "Alfa Romeo", car: "C43", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 16, driver: "Nico Hülkenberg", team: "Haas", car: "VF-23", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 17, driver: "Daniel Ricciardo", team: "AlphaTauri", car: "AT04", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 6, ] },
+          { position: 18, driver: "Zhou Guanyu", team: "Alfa Romeo", car: "C43", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1, ] },
+          { position: 19, driver: "Kevin Magnussen", team: "Haas", car: "VF-23", raceResults: [1, 3, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2,  ] },
+          { position: 20, driver: "Liam Lawson", team: "AlphaTauri", car: "AT04", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1, ] },
+          { position: 21, driver: "Logan Sargeant", team: "Williams", car: "FW45", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+          { position: 22, driver: "Nyck de Vries", team: "AlphaTauri", car: "AT04", raceResults: [3, 1, 1, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 1,  ] },
+
+        ];
+        
+        const tableBody = document.querySelector("#f1Table tbody");
+        
+        f1Data2023.forEach(entry => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${entry.position}</td>
+            <td>${entry.driver}</td>
+            <td>${entry.team}</td>
+            <td>${entry.car}</td>
+            ${entry.raceResults.map(result => `<td>${result}</td>`).join('')}
+          `;
+          tableBody.appendChild(row);
+        });
+        </script>
+        </body>
+        </html>
+        
+          </script>
+        </body>
+        </html>
+        
+
+    </main>
+    <footer>
+      <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+</body>
+</html>

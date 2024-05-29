@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przelicznik wartości</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head> 
+  <body>
+       <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+    <style>
+        
+                h1, h2 {
+            color: #d32f2f;
+        }
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results p {
+            font-size: 18px;
+        }
+        canvas {
+            display: block;
+            margin: 20px;
+        }
+
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+    </style>
+
+ 
+
+    <div class="container">
+        <h1>Przelicznik parametrów</h1>
+        <div class="input-group">
+            <label for="velocity">Prędkość (m/s):</label>
+            <input type="number" id="velocity" placeholder="Wpisz prędkość w m/s">
+        </div>
+        <div class="input-group">
+            <label for="time">Czas (sekundy):</label>
+            <input type="number" id="time" placeholder="Wpisz czas w sekundach">
+        </div>
+        <div class="input-group">
+            <label for="distance">Dystans (metery):</label>
+            <input type="number" id="distance" placeholder="Wpisz dystans w metrach">
+        </div>
+        <div class="input-group">
+            <label for="acceleration">Przyspieszenie (m/s²):</label>
+            <input type="number" id="acceleration" placeholder="Wpisz przyspieszenie w m/s²">
+        </div>
+        <button onclick="calculateParameters()">Oblicz</button>
+        <div class="results" id="results"></div>
+        <canvas id="velocityTimeChart" width="400" height="200"></canvas>
+        <canvas id="distanceTimeChart" width="400" height="200"></canvas>
+    </div>
+    <div>
+        <div id="header">
+        <div id="clock"></div>
+        <div id="date"></div>
+        <div id="visitCount"></div>
+        <div id="timeSpent"></div>
+    </div>
+
+    <script>
+        function calculateParameters() {
+            const velocity = parseFloat(document.getElementById('velocity').value);
+            const time = parseFloat(document.getElementById('time').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+            const acceleration = parseFloat(document.getElementById('acceleration').value);
+
+            let calculatedVelocity = velocity;
+            let calculatedTime = time;
+            let calculatedDistance = distance;
+            let calculatedAcceleration = acceleration;
+
+            if (isNaN(calculatedVelocity)) {
+                if (!isNaN(calculatedDistance) && !isNaN(calculatedTime) && calculatedTime !== 0) {
+                    calculatedVelocity = calculatedDistance / calculatedTime;
+                } else if (!isNaN(calculatedAcceleration) && !isNaN(calculatedTime)) {
+                    calculatedVelocity = calculatedAcceleration * calculatedTime;
+                }
+            }
+
+            if (isNaN(calculatedTime)) {
+                if (!isNaN(calculatedDistance) && !isNaN(calculatedVelocity) && calculatedVelocity !== 0) {
+                    calculatedTime = calculatedDistance / calculatedVelocity;
+                } else if (!isNaN(calculatedVelocity) && !isNaN(calculatedAcceleration) && calculatedAcceleration !== 0) {
+                    calculatedTime = calculatedVelocity / calculatedAcceleration;
+                }
+            }
+
+            if (isNaN(calculatedDistance)) {
+                if (!isNaN(calculatedVelocity) && !isNaN(calculatedTime)) {
+                    calculatedDistance = calculatedVelocity * calculatedTime;
+                }
+            }
+
+            if (isNaN(calculatedAcceleration)) {
+                if (!isNaN(calculatedVelocity) && !isNaN(calculatedTime) && calculatedTime !== 0) {
+                    calculatedAcceleration = calculatedVelocity / calculatedTime;
+                }
+            }
+
+            document.getElementById('results').innerHTML = `
+                <p>Obliczona Prędkość: ${calculatedVelocity ? calculatedVelocity.toFixed(2) : 'N/A'} m/s</p>
+                <p>Obliczony Czas: ${calculatedTime ? calculatedTime.toFixed(2) : 'N/A'} s</p>
+                <p>Obliczony Dystans: ${calculatedDistance ? calculatedDistance.toFixed(2) : 'N/A'} m</p>
+                <p>Obliczone Przyspieszenie: ${calculatedAcceleration ? calculatedAcceleration.toFixed(2) : 'N/A'} m/s²</p>
+            `;
+
+            if (!isNaN(calculatedVelocity) && !isNaN(calculatedTime)) {
+                drawVelocityTimeChart(calculatedVelocity, calculatedTime);
+                drawDistanceTimeChart(calculatedVelocity, calculatedTime);
+            }
+        }
+
+        function drawVelocityTimeChart(velocity, time) {
+            const ctx = document.getElementById('velocityTimeChart').getContext('2d');
+            const labels = Array.from({ length: Math.ceil(time) + 1 }, (_, i) => i);
+            const data = labels.map(() => velocity);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Prędkość (m/s)',
+                        data: data,
+                        borderColor: 'blue',
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Czas (s)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Prędkość (m/s)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function drawDistanceTimeChart(velocity, time) {
+            const ctx = document.getElementById('distanceTimeChart').getContext('2d');
+            const labels = Array.from({ length: Math.ceil(time) + 1 }, (_, i) => i);
+            const data = labels.map(t => velocity * t);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Dystans (m)',
+                        data: data,
+                        borderColor: 'red',
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Czas (s)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Dystans (m)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+                // Funkcja aktualizująca zegar i datę
+                function updateClockAndDate() {
+            const now = new Date();
+            const clockElement = document.getElementById('clock');
+            const dateElement = document.getElementById('date');
+            
+            clockElement.textContent = now.toLocaleTimeString('pl-PL');
+            dateElement.textContent = now.toLocaleDateString('pl-PL');
+        }
+    
+        // Inkrementacja licznika odwiedzin
+        function updateVisitCount() {
+            if (!localStorage.getItem('visitCount')) {
+                localStorage.setItem('visitCount', 0);
+            }
+            let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+            visitCount++;
+            localStorage.setItem('visitCount', visitCount);
+            document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+        }
+    
+        // Czas spędzony na stronie
+        let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+        function updateTimeSpent() {
+            timeSpent++;
+            sessionStorage.setItem('timeSpent', timeSpent);
+            document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+        }
+    
+        // Aktualizacja zegara i daty co sekundę
+        setInterval(updateClockAndDate, 1000);
+        
+        // Aktualizacja czasu spędzonego na stronie co sekundę
+        setInterval(updateTimeSpent, 1000);
+    
+        // Ustawienie początkowych wartości
+        updateClockAndDate();
+        updateVisitCount();
+        updateTimeSpent();
+    </script>  
+    </head>
+    
+    <footer>
+    <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+</body>
+</html>

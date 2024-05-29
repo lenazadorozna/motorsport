@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prezentacja z Obrazami - RWD</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0px;
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background-color: #fff;
+            margin: 10px 0;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide img {
+            max-width: 100%;
+            height: auto;
+        }
+        #controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #menu {
+            margin-bottom: 20px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .slide {
+                width: 100%;
+                padding: 15px;
+                box-shadow: none;
+            }
+            button {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+            #controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+        body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 20px;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    
+    <div id="menu">
+        <a href="#presentation" onclick="showPresentation()">Prezentacja</a>
+    </div>
+    
+    <div id="presentation" style="display: none;">
+        <div class="slide active">
+            <h2>Slajd 1</h2>
+            <img src="image1.png" alt="Obraz 1">
+            <p>To jest zawartość pierwszego slajdu.</p>
+        </div>
+        <div class="slide">
+            <h2>Slajd 2</h2>
+            <img src="image2.png" alt="Obraz 2">
+            <p>To jest zawartość drugiego slajdu.</p>
+        </div>
+        <div class="slide">
+            <h2>Slajd 3</h2>
+            <img src="image3.png" alt="Obraz 3">
+            <p>To jest zawartość trzeciego slajdu.</p>
+        </div>
+        <div class="slide">
+            <h2>Slajd 4</h2>
+            <img src="image4.png" alt="Obraz 4">
+            <p>To jest zawartość czwartego slajdu.</p>
+        </div>
+        <div class="slide">
+            <h2>Slajd 5</h2>
+            <img src="image5.png" alt="Obraz 5">
+            <p>To jest zawartość piątego slajdu.</p>
+        </div>
+        <div id="controls">
+            <button onclick="showPrevious()">Poprzedni</button>
+            <button onclick="showNext()">Następny</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const presentation = document.getElementById('presentation');
+
+        function showPresentation() {
+            presentation.style.display = 'block';
+            updateSlides();
+        }
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function showPrevious() {
+            currentSlideIndex = (currentSlideIndex > 0) ? currentSlideIndex - 1 : slides.length - 1;
+            updateSlides();
+        }
+
+        function showNext() {
+            currentSlideIndex = (currentSlideIndex < slides.length - 1) ? currentSlideIndex + 1 : 0;
+            updateSlides();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                showPrevious();
+            } else if (event.key === 'ArrowRight') {
+                showNext();
+            }
+        });
+        </script>
+    
+        <footer>
+            <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+        </footer>
+</body>
+</html>

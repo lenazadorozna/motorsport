@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Motorsport</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="Zegar.html">Zegar</a></li>
+                <li><a href="Kalkulator.html">Kalkulator</a></li>
+                <li><a href="kierowcy.html">Kierowcy</a></li>
+                <li><a href="aktualnosci.html">Aktualności</a></li>
+                <li><a href="wyniki.html">Wyniki i statystyki</a></li>
+                <li><a href="galeria.html">Galeria obrazów</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="prezentacja.html">Prezentacja</a></li>
+                <li><a href="formularz.html">Formularz</a></li>
+                <li><a href="znacznikMAP.html">Plan Bolidu</a></li>            </ul>
+        </nav>
+    </header>
+    <main>
+            <style>
+                body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0px;
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+                #gallery {
+                    max-width: 80%;
+                    max-height: 70vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                }
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    display: none;
+                }
+                img.active {
+                    display: block;
+                }
+                #controls {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                button {
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+                body {
+                font-family: Arial, sans-serif;
+            }
+            #header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            #footer {
+                text-align: center;
+                margin-top: 2px;
+            }
+            </style>
+        </head>
+        <body>
+            <div id="gallery">
+                <img src="image1.png" alt="Obraz 1" class="active">
+                <img src="image2.png" alt="Obraz 2">
+                <img src="image3.png" alt="Obraz 3">
+                <img src="image4.png" alt="Obraz 4">
+                <img src="image5.png" alt="Obraz 5">
+            </div>
+            <div id="controls">
+                <button onclick="showFirst()">Pierwszy</button>
+                <button onclick="showPrevious()">Poprzedni</button>
+                <button onclick="showNext()">Następny</button>
+                <button onclick="showLast()">Ostatni</button>
+            </div>
+            <script>
+                let currentIndex = 0;
+                const images = document.querySelectorAll('#gallery img');
+                
+                function updateGallery() {
+                    images.forEach((img, index) => {
+                        img.classList.toggle('active', index === currentIndex);
+                    });
+                }
+                
+                function showFirst() {
+                    currentIndex = 0;
+                    updateGallery();
+                }
+        
+                function showLast() {
+                    currentIndex = images.length - 1;
+                    updateGallery();
+                }
+        
+                function showPrevious() {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                    updateGallery();
+                }
+        
+                function showNext() {
+                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                    updateGallery();
+                }
+        
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowLeft') {
+                        showPrevious();
+                    } else if (event.key === 'ArrowRight') {
+                        showNext();
+                    }
+                });
+            </script>
+             <div id="header">
+                <div id="clock"></div>
+                <div id="date"></div>
+                <div id="visitCount"></div>
+                <div id="timeSpent"></div>
+            </div>
+            <script>
+                 // Funkcja aktualizująca zegar i datę
+    function updateClockAndDate() {
+        const now = new Date();
+        const clockElement = document.getElementById('clock');
+        const dateElement = document.getElementById('date');
+        
+        clockElement.textContent = now.toLocaleTimeString('pl-PL');
+        dateElement.textContent = now.toLocaleDateString('pl-PL');
+    }
+
+    // Inkrementacja licznika odwiedzin
+    function updateVisitCount() {
+        if (!localStorage.getItem('visitCount')) {
+            localStorage.setItem('visitCount', 0);
+        }
+        let visitCount = parseInt(localStorage.getItem('visitCount'), 10);
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = `Liczba odwiedzin: ${visitCount}`;
+    }
+
+    // Czas spędzony na stronie
+    let timeSpent = sessionStorage.getItem('timeSpent') ? parseInt(sessionStorage.getItem('timeSpent'), 10) : 0;
+    function updateTimeSpent() {
+        timeSpent++;
+        sessionStorage.setItem('timeSpent', timeSpent);
+        document.getElementById('timeSpent').textContent = `Czas spędzony na stronie: ${timeSpent} sekund`;
+    }
+
+    // Aktualizacja zegara i daty co sekundę
+    setInterval(updateClockAndDate, 1000);
+    
+    // Aktualizacja czasu spędzonego na stronie co sekundę
+    setInterval(updateTimeSpent, 1000);
+
+    // Ustawienie początkowych wartości
+    updateClockAndDate();
+    updateVisitCount();
+    updateTimeSpent();
+            </script>
+        </body>
+        </html>
+        
+    </main>
+    <footer>
+        <p>&copy; 157617 Bartłomiej Giszczak. Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka</p>
+    </footer>
+</body>
+</html>
